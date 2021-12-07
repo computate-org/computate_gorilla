@@ -1,0 +1,38 @@
+---
+- name: "Install dependencies: {{ APP_DEPENDENCIES | join(' ') }}"
+  shell: "pkcon install -y {{ item }} | true"
+  loop: "{{ APP_DEPENDENCIES }}"
+- name: "Create the directory {{ APP_SRC }}"
+  file:
+    name: "{{ APP_SRC }}"
+    state: directory
+- name: "Check for the README file {{ APP_README }}"
+  stat:
+    path: "{{ APP_README }}"
+  register: APP_README_PATH
+- name: "Clone the {{ APP_REPO }} source code into {{ APP_SRC }}"
+  git:
+    repo: "{{ APP_REPO }}"
+    dest: "{{ APP_SRC }}"
+    version: "{{ APP_TAG }}"
+  when: not APP_README_PATH.stat.exists
+  ignore_errors: true
+- name:
+  ansible.builtin.file:
+    path: "{{ APP_SRC }}/sources/itcl3.4"
+    state: absent
+- name:
+  ansible.builtin.file:
+    src: "{{ APP_PREFIX }}/lib/itcl3.4"
+    dest: "{{ APP_SRC }}/sources/itcl3.4"
+    state: link
+- name: "Create the run script {{ APP_SRC }}/run.sh"
+  template:
+    src: run.sh
+    mode: 0775
+    dest: "{{ APP_SRC }}/run.sh"
+- name: "Create the launcher {{ APP_DESKTOP }}"
+  template:
+    src: app.desktop
+    dest: "{{ APP_DESKTOP }}"
+

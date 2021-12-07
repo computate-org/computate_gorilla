@@ -1,0 +1,25 @@
+---
+APP_PYTHON: "{{ '/usr/bin/python' if lookup('file', '/usr/bin/python', errors='ignore') else '/usr/bin/python3' }}"
+APP_DEPENDENCIES_REDHAT:
+  - git
+  - tcl
+  - tk
+APP_DEPENDENCIES: "{{ APP_DEPENDENCIES_REDHAT if ansible_distribution_file_variety == 'RedHat' else APP_DEPENDENCIES_REDHAT }}"
+APP_NAME: gorilla
+APP_DISPLAY_NAME: Password Gorilla
+APP_GENERIC_NAME: An encrypted password manager
+APP_COMMENT: Encrypt your passwords
+APP_USER: "{{ lookup('env', 'USER') }}"
+APP_GROUP: "{{ APP_USER }}"
+APP_PREFIX: "{{ lookup('env', 'HOME') }}/.local"
+APP_SRC: "{{ APP_PREFIX }}/src/{{ APP_NAME  }}"
+APP_SHARE: "{{ APP_PREFIX }}/share/{{ APP_NAME  }}"
+APP_REPO: git@github.com:zdia/gorilla.git
+APP_TAG: master
+APP_DESKTOP: "{{ lookup('env', 'HOME') }}/.local/share/applications/{{ APP_NAME }}.desktop"
+APP_README: "{{ APP_SRC }}/README.md"
+APP_ICON: "{{ APP_SRC }}/sources/pics/vector-logo/gorilla-logo.svg"
+APP_EXEC: "{{ APP_SRC }}/sources/gorilla.tcl"
+APP_KEYWORDS: "password;"
+APP_CATEGORIES: "Utility;Accessibility;"
+
