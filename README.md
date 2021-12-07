@@ -1,16 +1,16 @@
 
-# Install the bzflag ansible role
+# Install the gorilla ansible role
 
 ```bash
 # Create a directory for the ansible role. 
-install -d ~/.ansible/roles/computate.computate_bzflag
+install -d ~/.ansible/roles/computate.computate_gorilla
 
-# Clone the bzflag ansible role. 
-git clone git@github.com:computate-org/computate_bzflag.git ~/.ansible/roles/computate.computate_bzflag
-cd ~/.ansible/roles/computate.computate_bzflag
+# Clone the gorilla ansible role. 
+git clone git@github.com:computate-org/computate_gorilla.git ~/.ansible/roles/computate.computate_gorilla
+cd ~/.ansible/roles/computate.computate_gorilla
 ```
 
-# Run the bzflag ansible playbook to install bzflag locally (requires sudo privileges with -K). 
+# Run the gorilla ansible playbook to install gorilla locally (requires sudo privileges with -K). 
 
 ```bash
 ansible-playbook -K install.yml
