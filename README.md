@@ -1,4 +1,9 @@
 
+# Prerequisites
+
+Install the ITCL application as a prerequisite, see: 
+https://github.com/computate-org/computate_itcl
+
 # Install the gorilla ansible role
 
 ```bash
@@ -10,9 +15,9 @@ git clone git@github.com:computate-org/computate_gorilla.git ~/.ansible/roles/co
 cd ~/.ansible/roles/computate.computate_gorilla
 ```
 
-# Run the gorilla ansible playbook to install gorilla locally (requires sudo privileges with -K). 
+# Run the gorilla ansible playbook to install gorilla locally. 
 
 ```bash
-ansible-playbook -K install.yml
+ansible-playbook install.yml
 ```
 
