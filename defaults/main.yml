@@ -18,7 +18,7 @@ APP_REPO: git@github.com:zdia/gorilla.git
 APP_TAG: master
 APP_DESKTOP: "{{ lookup('env', 'HOME') }}/.local/share/applications/{{ APP_NAME }}.desktop"
 APP_README: "{{ APP_SRC }}/README.md"
-APP_ICON: "{{ APP_SRC }}/sources/pics/vector-logo/gorilla-logo.svg"
+APP_ICON: "{{ APP_SRC }}/sources/pics/splash.gif"
 APP_EXEC: "{{ APP_SRC }}/sources/gorilla.tcl"
 APP_KEYWORDS: "password;"
 APP_CATEGORIES: "Utility;Accessibility;"
